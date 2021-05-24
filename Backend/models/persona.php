@@ -8,7 +8,7 @@ class Persona extends Model
 {
     protected $id;
     protected $tipo_identificacion;
-    protected $identificacion;
+    protected $numero_identificacion;
     protected $nombres;
     ;
 

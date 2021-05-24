@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /
+options +FollowSymLinks
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* API_INVENTARIO/Api_inventario/Backend/index.php/$0 [L]

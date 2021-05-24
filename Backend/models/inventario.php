@@ -14,6 +14,6 @@ class Inventario extends Model
     public function __construct()
     {
         $this->superClass($this);
-        $this->table = 'objetos_inventario';
+        $this->table = 'objectos_inventario';
     }
 }
