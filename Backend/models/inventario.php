@@ -7,7 +7,7 @@ use models\Model;
 class Inventario extends Model
 {
     protected $id;
-    protected $nombres;
+    protected $nombre;
     protected $descripcion;
     ;
 

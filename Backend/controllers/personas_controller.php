@@ -25,7 +25,7 @@ class PersonaController extends BaseController
     {
         $modelValidation = new Persona();
         $data = $modelValidation->where([
-            ['numero_identificacion', '=', $request['identificacion']]
+            ['numero_identificacion', '=', $request['numero_identificacion']]
         ]);
         if (count($data) > 0) {
             return "La persona ya se cuentra registrado";

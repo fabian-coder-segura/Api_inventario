@@ -25,7 +25,7 @@ class SalidaController extends BaseController
     {
         $modelValidation = new Salida();
         $data = $modelValidation->where([
-            ['id', '=', $request['d']]
+            ['id', '=', $request['id']]
         ]);
         if (count($data) > 0) {
             return "El código ya se cuentra registrado";
@@ -35,7 +35,7 @@ class SalidaController extends BaseController
         $model->set('fecha', $request['fecha']);
         $model->set('cantidad',  $request['cantidad']);
         $model->set('persona_id',  $request['persona_id']);
-        $model->set('invetario_objeto_id',  $request['invetario_objeto_id']);
+        $model->set('objecto_inventario_id',  $request['objecto_inventario_id']);
         $status = $model->save();
         return $status ? 'Registro guardado' : 'Error al guardar el registro';
     }
@@ -56,7 +56,7 @@ class SalidaController extends BaseController
         $model->set('fecha', $request['fecha']);
         $model->set('cantidad',  $request['cantidad']);
         $model->set('persona_id',  $request['persona_id']);
-        $model->set('invetario_objeto_id',  $request['invetario_objeto_id']);
+        $model->set('objecto_inventario_id',  $request['objecto_inventario_id']);
         $status = $model->update();
         return $status ? 'Registro actualizado' : 'Error al actualizar el registro';
     }
