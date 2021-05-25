@@ -11,7 +11,7 @@ class Entrada extends Model
     protected $cantidad;
     protected $persona_id;
     protected $objecto_inventario_id;
-    ;
+    
 
     public function __construct()
     {

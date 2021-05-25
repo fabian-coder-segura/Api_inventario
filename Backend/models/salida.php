@@ -11,7 +11,7 @@ class Salida extends Model
     protected $cantidad;
     protected $persona_id;
     protected $invetario_objeto_id;
-    ;
+    
 
     public function __construct()
     {

@@ -6,7 +6,7 @@ require_once dirname(__DIR__) . '/controllers/base_controller.php';
 require_once dirname(__DIR__) . '/api/parse_array_reponse.php';
 require_once dirname(__DIR__) . '/api/response.php';
 
-$uriRelativeApp =  '/API_INVENTARIO/Api_inventario/Backend/';
+$uriRelativeApp =  '/API_INVENTARIO/Api_inventario/backend/';
 
 $uriClass = [
     "entradas" => [
@@ -29,10 +29,10 @@ $uriClass = [
 ];
 
 $controllers = [
-    'controller' => 'controllers/entradas_controller.php',
-    'controller' => 'controllers/inventario_controller.php',
-    'controller' => 'controllers/personas_controller.php',
-    'controller' => 'controllers/salidas_controller.php'
+    'entradas' => 'controllers\EntradaController',
+    'inventario' => 'controllers\InventarioController',
+    'personas' => 'controllers\PersonaController',
+    'salidas' => 'controllers\SalidaController'
 ];
 
 

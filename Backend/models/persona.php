@@ -10,7 +10,7 @@ class Persona extends Model
     protected $tipo_identificacion;
     protected $numero_identificacion;
     protected $nombres;
-    ;
+    
 
     public function __construct()
     {

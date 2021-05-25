@@ -7,7 +7,7 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 use api\Routers;
 
-require_once dirname(__DIR__) . '/API_INVENTARIO/Api_inventario/Backend/api/routers.php';
+require_once dirname(__DIR__) . '/Backend/api/routers.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == "OPTIONS") {
