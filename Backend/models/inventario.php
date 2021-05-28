@@ -9,6 +9,7 @@ class Inventario extends Model
     protected $id;
     protected $nombre;
     protected $descripcion;
+    protected $disponibilidad;
     
 
     public function __construct()

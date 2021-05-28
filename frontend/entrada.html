@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Inicio</title>
+    <title>Entradas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
     crossorigin="anonymous">
@@ -21,10 +21,10 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Listado de personas</a>
+                    <a class="nav-link " aria-current="page" href="index.html">Listado de personas</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="entrada.html">Listado de Entradas</a>
+                    <a class="nav-link active" href="entrada.html">Listado de Entradas</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="salida.html">Listado de Salidas</a>
@@ -38,71 +38,85 @@
           </nav>
     </div>
     <div>
-        <h1>Listado de Personas</h1>
+        <h1>Listado de Entradas</h1>
         <div class="contentButtons">
             <button  type="button" class="btn btn-success" onclick="crear()">Crear</button>
         </div>
-        <table class="table table-striped" id="ListaPersonas">
+        <table class="table table-striped" id="ListaEntrada">
             <thead>
               <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Tipo identificación</th>
-                <th scope="col">Número de identificación</th>
-                <th scope="col">Nombres</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Persona</th>
+                <th scope="col">Objeto</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="3" colspan="5">No hay datos registrados</td>
+                <td class="3" colspan="6">No hay datos registrados</td>
             </tbody>
           </table>
     </div>
    
 
     <div id="controlForm">
-        <h2>Registrar estudiante</h2>
+        <h2>Registrar entrada</h2>
         <form onsubmit="saveDataForm(event)">
             <div>
-                <label>Tipo identificación:</label>
-                <input name="tipo_identificacion" id="tipo_identificacion" type="text" value="" required>
+                <label>Id:</label>
+                <input name="id" id="id" type="text" value="" required>
             </div>
             <div>
-                <label>Numero de identificación:</label>
-                <input name="numero_identificacion" id="numero_identificacion" type="text" value="" required>
+                <label>Fecha:</label>
+                <input name="fecha" id="fecha" type="date" value="" required>
             </div>
             <div>
-                <label>Nombres:</label>
-                <input name="nombres" id="nombres" type="text" value="" required>
+                <label>Cantidad:</label>
+                <input name="cantidad" id="cantidad" type="number" value="" required>
             </div>
+            <div>
+                <label>Persona:</label>
+                <input name="persona_id" id="persona_id" type="text" value="" required>
+            </div>
+            <div>
+                <label>Objeto:</label>
+                <input name="objecto_inventario" id="objecto_inventario_id" type="text" value="" required>
+            </div>
+            
         </form>
         <button type="submit" onclick="save(data)">Guardar</button>    
     </div>
 
     <div id="controlDetail">
-        <h2>Detalle datos estudiante</h2>
+        <h2>Detalle datos entrada</h2>
         <div>
             <label>id:</label>
             <label id="idLb"></label>
         </div>
         <div>
-            <label>Tipo identificación:</label>
-            <label id="tipo_identificacionLb"></label>
+            <label>Fecha:</label>
+            <label id="fechaLb"></label>
         </div>
         <div>
-            <label>Número de identificación:</label>
-            <label id="numero_identificacionLb"></label>
+            <label>Cantidad:</label>
+            <label id="cantidadLb"></label>
         </div>
         <div>
-            <label>Nombres:</label>
-            <label id="nombresLb"></label>
+            <label>Persona:</label>
+            <label id="personaLb"></label>
+        </div>
+        <div>
+            <label>Objecto:</label>
+            <label id="objecto_inventario_idLb"></label>
         </div>
 
     </div>
 
     
 
-    <script src="js/index.js"></script>
+    <script src="js/entrada.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
     crossorigin="anonymous"></script>

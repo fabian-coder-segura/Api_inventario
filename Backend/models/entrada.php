@@ -27,7 +27,7 @@ class Entrada extends Model
 
     public function get_inventario()
     {
-        $row=(new Inventario())->find($this->invetario_objeto_id);
+        $row=(new Inventario())->find($this->invetario_objecto_id);
         return $row;
     }
 }

@@ -10,7 +10,7 @@ class Salida extends Model
     protected $fecha;
     protected $cantidad;
     protected $persona_id;
-    protected $invetario_objeto_id;
+    protected $objecto_inventario_id;
     
 
     public function __construct()
@@ -27,7 +27,7 @@ class Salida extends Model
 
     public function get_inventario()
     {
-        $row=(new Inventario())->find($this->invetario_objeto_id);
+        $row=(new Inventario())->find($this->invetario_objecto_id);
         return $row;
     }
 }

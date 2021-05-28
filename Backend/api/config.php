@@ -13,7 +13,7 @@ $uriClass = [
         'model' => 'models/entrada.php',
         'controller' => 'controllers/entradas_controller.php'
     ],
-    "objetos_inventario" => [
+    "objectos_inventario" => [
         'model' => 'models/inventario.php',
         'controller' => 'controllers/inventario_controller.php'
     ],
@@ -30,7 +30,7 @@ $uriClass = [
 
 $controllers = [
     'entradas' => 'controllers\EntradaController',
-    'inventario' => 'controllers\InventarioController',
+    'objectos_inventario' => 'controllers\InventarioController',
     'personas' => 'controllers\PersonaController',
     'salidas' => 'controllers\SalidaController'
 ];

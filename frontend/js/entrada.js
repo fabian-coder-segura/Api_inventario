@@ -1,7 +1,7 @@
-const urlApi = "http://localhost/API_INVENTARIO/Api_inventario/backend/personas";
-let ListaPersonas = [];
-let idPersona = 0;
-let persona = null;
+const urlApi = "http://localhost/API_INVENTARIO/Api_inventario/backend/entradas";
+let ListaEntrada = [];
+let idEntrada = 0;
+let Entrada = null;
 
 function indexApi() {
     let response = null;
@@ -10,7 +10,7 @@ function indexApi() {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            ListaPersonas  = response.data;
+            ListaEntrada  = response.data;
             asignarDatosTablaHtml();
         }
     };
@@ -21,13 +21,14 @@ indexApi();
 
 function asignarDatosTablaHtml() {
     let html = '';
-    for (let item of ListaPersonas) {
+    for (let item of ListaEntrada) {
         console.log(item);
         html += '<tr>';
         html += '    <td>' + item.id + '</td>';
-        html += '    <td>' + item.tipo_identificacion + '</td>';
-        html += '    <td>' + item.numero_identificacion + '</td>';
-        html += '    <td>' + item.nombres + '</td>';
+        html += '    <td>' + item.fecha + '</td>';
+        html += '    <td>' + item.cantidad + '</td>';
+        html += '    <td>' + item.persona_id + '</td>';
+        html += '    <td>' + item.objecto_inventario_id + '</td>';
         html += '    <td>';
         html += '        <div class="contentButtons">';
         html += '            <button type="button" class="btn btn-light" onclick="ver(' + item.id + ')">Ver detalle</button>';
@@ -42,7 +43,7 @@ function asignarDatosTablaHtml() {
         html += '    <td class="3">No hay datos registrados</td>';
         html += '</tr>';
     }
-    const element = document.getElementById('ListaPersonas').getElementsByTagName('tbody')[0];
+    const element = document.getElementById('ListaEntrada').getElementsByTagName('tbody')[0];
     element.innerHTML = html;
 }
 
@@ -53,10 +54,10 @@ function datailApi() {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            persona = response.data;
+            Entrada = response.data;
         }
     };
-    xhttp.open("GET", urlApi + '/' + idPersona, false);
+    xhttp.open("GET", urlApi + '/' + idEntrada, false);
     xhttp.send();
 }
 
@@ -64,9 +65,10 @@ function datailApi() {
 function saveDataForm(event) {
     event.preventDefault();
     let data = 'id=' + document.getElementById('id').value;
-    data += '&tipo_identificacion=' + document.getElementById('tipo_identificacion').value;
-    data += '&numero_identificacion=' + document.getElementById('numero_identificacion').value;
-    data += '&nombres=' + document.getElementById('nombres').value;
+    data += '&fecha=' + document.getElementById('fecha').value;
+    data += '&cantidad=' + document.getElementById('cantidad').value;
+    data += '&persona_id=' + document.getElementById('persona_id').value;
+    data += '&objecto_inventario_id=' + document.getElementById('objecto_inventario_id').value;
     save(data);
 }
 
@@ -80,68 +82,71 @@ function save(data) {
             indexApi();
         }
     };
-    let param = idPersona > 0 ? '/' + idPersona : '';
-    let metodo = idPersona > 0 ? 'PUT' : 'POST';
+    let param = idEntrada > 0 ? '/' + idEntrada : '';
+    let metodo = idEntrada > 0 ? 'PUT' : 'POST';
     xhttp.open(metodo, urlApi + param, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(data);
 }
 
 function crear() {
-    idPersona = 0;
-    persona = null;
+    idEntrada = 0;
+    Entrada = null;
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
-    elementTitulo.innerText = 'Registrar datos persona';
-    document.getElementById('id').value = '';
-    document.getElementById('tipo_identificacion').value = '';
-    document.getElementById('numero_identificacion').value = '';
-    document.getElementById('nombres').value = '';
+    elementTitulo.innerText = 'Registrar datos Entrada';
+    document.getElementById('id').value;
+    document.getElementById('fecha').value;
+    document.getElementById('cantidad').value;
+    document.getElementById('persona_id').value;
+    document.getElementById('objecto_inventario_id').value;
 }
 
 
 
 function modificar(id) {
     console.log(id);
-    idPersona = id;
-    persona = null;
+    idEntrada = id;
+    Entrada = null;
     const elementTitulo = document.getElementById('controlForm').getElementsByTagName('h2')[0];
-    elementTitulo.innerText = 'Modificar datos persona';
+    elementTitulo.innerText = 'Modificar datos Entrada';
     datailApi();
-    if (persona != null) {
-        document.getElementById('id').value = persona.id;
-        document.getElementById('tipo_identificacion').value = persona.tipo_identificacion;
-        document.getElementById('numero_identificacion').value = persona.numero_identificacion;
-        document.getElementById('nombres').value = persona.nombres;
+    if (Entrada != null) {
+        document.getElementById('id').value = Entrada.id;
+        document.getElementById('fecha').value = Entrada.fecha;
+        document.getElementById('cantidad').value = Entrada.cantidad;
+        document.getElementById('persona_id').value = Entrada.persona_id;
+        document.getElementById('objecto_inventario_id').value = Entrada.objecto_inventario_id;
     }
 }
 
 function eliminar(id) {
     console.log(id);
-    idPersona = id;
+    idEntrada = id;
     let response = null;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             response = JSON.parse(this.response);
             console.log(response);
-            idPersona = 0;
-            persona = null;
+            idEntrada = 0;
+            Entrada = null;
             indexApi();
         }
     };
-    xhttp.open("DELETE", urlApi + '/' + idPersona, false);
+    xhttp.open("DELETE", urlApi + '/' + idEntrada, false);
     xhttp.send();
 }
 
 function ver(id) {
     console.log(id);
-    idPersona = id;
-    persona = null;
+    idEntrada = id;
+    Entrada = null;
     datailApi();
-    if (persona != null) {
-        document.getElementById('idLb').innerText = persona.id;
-        document.getElementById('tipo_identificacionLb').innerText = persona.tipo_identificacion;
-        document.getElementById('numero_identificacionLb').innerText = persona.numero_identificacion;
-        document.getElementById('nombresLb').innerText = persona.nombres;
+    if (Entrada != null) {
+        document.getElementById('idLb').innerText = Entrada.id;
+        document.getElementById('fechaLb').innerText = Entrada.fecha;
+        document.getElementById('cantidadLb').innerText = Entrada.cantidad;
+        document.getElementById('personaLb').innerText = Entrada.persona_id;
+        document.getElementById('objecto_inventario_idLb').innerText = Entrada.objecto_inventario_id;
     }
 }
